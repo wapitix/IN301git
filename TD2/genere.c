@@ -1,22 +1,19 @@
-#include "constantes.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "constantes.h"
 #include <unistd.h>
 
 void ecrire(){
+  FILE *F = fopen(NOMFIC,"w");
 
-  FILE *F;
-  F = fopen("NOMFIC","w");
-  srand(getpid());
-  for(int i=1; i<21; i++){
-
-    fprintf(F,"Nombre %d = %6d \n",i,rand()%MAX); }
-
+  for(int i=1;i<N+1;i++){
+    fprintf(F,"%6d\n",rand()%MAX);
+  }
   fclose(F);
 }
 
 int main(){
   ecrire();
-  
-  return 0;
+
+return 0;
 }
