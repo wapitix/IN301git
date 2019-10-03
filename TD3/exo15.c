@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int T[11];
+int T[10];
 
 void remplirTableau()
 {
@@ -20,12 +20,34 @@ void afficherTableau(){
   printf("\n");
 }
 
-void sommeValeurs(){
-  int somme = 0;
+void afficherTableauTrie(){
   for(int i=0;i<10;i++){
-    somme = somme + T[i];
+    T[i]=rand()%20;
   }
-  printf("Somme des valeurs = %d\n", somme);
+
+  for(int j=1;j<10;j++){
+    for(int i=0;i<9;i++){
+      if(T[i]>T[i+1]){
+        int c=T[i];
+        T[i]=T[i+1];
+        T[i+1]=c;
+      }
+    }
+  }
+  int i=0;
+  while(i<10){
+    printf("%d\n",T[i]);
+    i++;
+  }
+  printf("\n");
+}
+
+void produitValeurs(){
+  int produit = T[0];
+  for(int i=1;i<10;i++){
+    produit = produit * T[i];
+  }
+  printf("Produit des valeurs = %d\n", produit);
 }
 
 void valeurMin(){
@@ -52,17 +74,18 @@ void decalageDroiteTableau(){
   }
 }
 
+
 void allocationTableau(){
   T[0]=rand()%10;
-  for(int i=1;i<10;i++){
+  int i;
+  for(i=1;i<10;i++){
     T[i]=T[i-1]+rand()%10;
   }
-
-  for(int j=0;j<10;j++){
+  int j;
+  for(j=0;j<10;j++){
     printf(" %d\n",T[j]);
   }
 }
-
 
 
 void ajoutValeur(int valeur){
@@ -89,28 +112,49 @@ void ajoutValeur(int valeur){
 }
 
 
-PAS FAIT A FAIRE
-/*
 void inversementTableau(){
-  for(int i=0;i<10;i++){
-    T[i]=T[i+1];
-    for(int j=10;j>0;j--){
-      printf(" %d\n",T[j]);
-    }
+  int i=0, j=9,x;
+
+  while(i<j){
+    x=T[j];
+    T[j]=T[i];
+    T[i]=x;
+    i++;
+    j--;
   }
-}*/
+  for(i=0; i<10;i++){
+    printf("%d\n",T[i]);
+  }
+}
+
+void suppressionValeur(int v){
+
+}
 
 
 int main(){
-  inversementTableau();
-  //tri(); //affichage tableau trié
-  //ajoutValeur(10);
-  //allocationTableau();
-  //remplirTableau();
-  //decalageDroiteTableau();
-  //afficherTableau();
-  //sommeValeurs();
-  //valeurMin();
+  //Question A
+remplirTableau();
+  //Question B
+afficherTableau();
+//afficherTableauTrie();
+  //Question C
+//produitValeurs();
+  //Question D
+//valeurMin();
+  //Question E
+//decalageDroiteTableau();
+  //Question F
+//allocationTableau();
+  //Question G
+//ajoutValeur(10);
+  //Question H
+//inversementTableau();
+  //Question I
+//suppressionValeur(5);
+  //Question J
+
+
 
 return 0;
 }

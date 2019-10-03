@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void plusun(int a, int *T){
+int plusun(int a, int *T){
   a = a+1;
   T[0] = T[0]+1;
+  return a;
+  return T[0];
 }
 
 int main(){
